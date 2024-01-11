@@ -34,23 +34,23 @@ import android.database.sqlite.SQLiteOpenHelper;
         public void onCreate(SQLiteDatabase db) {
 
             strCreate="CREATE TABLE "+TABLE_Grades;
-            strCreate+=" ("+KEY_ID+" INTEGER PRIMARY KEY ,";
+            strCreate+=" ("+KEY_ID+" INTEGER PRIMARY KEY,";
             strCreate+=" "+GRADES+" INTEGER,";
             strCreate+=" "+SUBJECT+" TEXT,";
-            strCreate+=" "+TYPE+" TEXT ,";
-            strCreate+=" "+QUARTER+" TEXT ,";
+            strCreate+=" "+TYPE+" TEXT,";
+            strCreate+=" "+QUARTER+" TEXT";
             strCreate+=");";
             db.execSQL(strCreate);
 
             strCreate="CREATE TABLE "+TABLE_Student;
-            strCreate+=" ("+KEY_ID+" INTEGER PRIMARY KEY,";
+            strCreate+=" ("+Student_table.KEY_ID+" INTEGER PRIMARY KEY,";
             strCreate+=" "+Full_name+" TEXT,";
-            strCreate+=" "+Address+" TEXT ,";
-            strCreate+=" "+Personal_phone+" TEXT ,";
-            strCreate+=" "+Mom_name+" TEXT ,";
-            strCreate+=" "+Mom_phone+" INTEGER ,";
-            strCreate+=" "+Dad_name+" TEXT ,";
-            strCreate+=" "+Dad_phone+" INTEGER ,";
+            strCreate+=" "+Address+" TEXT,";
+            strCreate+=" "+Personal_phone+" TEXT,";
+            strCreate+=" "+Mom_name+" TEXT,";
+            strCreate+=" "+Mom_phone+" INTEGER,";
+            strCreate+=" "+Dad_name+" TEXT,";
+            strCreate+=" "+Dad_phone+" INTEGER";
 
 
             strCreate+=");";
@@ -69,4 +69,4 @@ import android.database.sqlite.SQLiteOpenHelper;
         }
     }
 
-}
+

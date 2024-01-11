@@ -30,6 +30,8 @@ public class Student_data extends AppCompatActivity {
     AlertDialog.Builder adb;
     ContentValues cv = new ContentValues();
     EditText dn,dp,mn,pp,mp,address,save,fn;
+    SQLiteDatabase db;
+    HelperDB hlp;
 
 
     @Override
@@ -43,11 +45,11 @@ public class Student_data extends AppCompatActivity {
         pp =findViewById(R.id.pp);
         mp =findViewById(R.id.mp);
         fn =findViewById((R.id.fn));
-        SQLiteDatabase db;
-        HelperDB hlp;
+
         hlp = new HelperDB(this);
         db = hlp.getWritableDatabase();
         db.close();
+
 
 
 
@@ -67,10 +69,6 @@ public class Student_data extends AppCompatActivity {
         menu.add("filtering/sorting");
         menu.add("credits");
 
-
-
-
-
     }
 
     public boolean onOptionsItemSelected(@NonNull MenuItem item)
@@ -85,38 +83,22 @@ public class Student_data extends AppCompatActivity {
             startActivity(si);
 
         } else if (st.equals("grades")) {
-        Intent si = new Intent(this, grades_data.class);
-        startActivity(si);
+            Intent si = new Intent(this, grades_data.class);
             startActivity(si);
-            adb = new AlertDialog.Builder(this);
-            adb.setTitle("do you want to save?");
-            adb.setMessage("do you want to save?");
-            adb.setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-
-                }
-            });
-            adb.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int i) {
-                    dialog.cancel();
-                }
-            });
-            AlertDialog ad = adb.create();
-            ad.show();
         }
+        else if (st.equals("student")) {
+            Intent si = new Intent(this, Student_data.class);
+            startActivity(si);
+        }
+     else if (st.equals("grades_d")) {
+        Intent si = new Intent(this, Gareds_delete_option.class);
+        startActivity(si);
+    }
+
         return super.onOptionsItemSelected(item);
     }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
 
 
-        getMenuInflater().inflate(R.menu.main,menu);
-
-
-        return super.onCreateOptionsMenu(menu);
-    }
 
 
     public void save(View view) {
@@ -127,8 +109,12 @@ public class Student_data extends AppCompatActivity {
         cv.put(Mom_phone, mp.getText().toString() );
         cv.put(Dad_name, dn.getText().toString());
         cv.put(Dad_phone, dp.getText().toString());
+        db.insert(Student_table.TABLE_Student, null, cv);
+
+        db.close();
 
 
 
     }
+
 }

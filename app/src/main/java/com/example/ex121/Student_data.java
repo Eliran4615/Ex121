@@ -1,9 +1,18 @@
 package com.example.ex121;
 
+import static com.example.ex121.Student_table.Address;
+import static com.example.ex121.Student_table.Dad_name;
+import static com.example.ex121.Student_table.Dad_phone;
+import static com.example.ex121.Student_table.Full_name;
+import static com.example.ex121.Student_table.Mom_name;
+import static com.example.ex121.Student_table.Mom_phone;
+import static com.example.ex121.Student_table.Personal_phone;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -12,23 +21,28 @@ import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
-
+import java.util.Objects;
 
 
 public class Student_data extends AppCompatActivity {
     AlertDialog.Builder adb;
+    ContentValues cv = new ContentValues();
+    EditText dn,dp,mn,pp,mp,address,save,fn;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_data);
-        findViewById(R.id.address);
-        findViewById(R.id.dn);
-        findViewById(R.id.dp);
-        findViewById(R.id.mn);
-        findViewById(R.id.pp);
-        findViewById(R.id.mp);
-        findViewById(R.id.save);
+        address = findViewById(R.id.address);
+        dn =findViewById(R.id.dn);
+        dp =findViewById(R.id.dp);
+        mn =findViewById(R.id.mn);
+        pp =findViewById(R.id.pp);
+        mp =findViewById(R.id.mp);
+        fn =findViewById((R.id.fn));
         SQLiteDatabase db;
         HelperDB hlp;
         hlp = new HelperDB(this);
@@ -37,13 +51,14 @@ public class Student_data extends AppCompatActivity {
 
 
 
+
+
+
     }
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo) {
-        hlp = new HelperDB(this);
-        db = hlp.getWritableDatabase();
-        db.close();
+
         super.onCreateContextMenu(menu, view, menuInfo);
         menu.setHeaderTitle("view Options");
         menu.add("personal");
@@ -64,13 +79,13 @@ public class Student_data extends AppCompatActivity {
          * function will check if the user clicked the credit button and if he did it will get him to the credits screen
          * param item: the item clicked
          */
-        String st = item.getTitle().toString();
+        String st = Objects.requireNonNull(item.getTitle()).toString();
         if(st.equals("credit")) {
             Intent si = new Intent(this, Credits.class);
             startActivity(si);
 
         } else if (st.equals("grades")) {
-        Intent si = new Intent(this, grades_input.class);
+        Intent si = new Intent(this, grades_data.class);
         startActivity(si);
             startActivity(si);
             adb = new AlertDialog.Builder(this);
@@ -104,7 +119,16 @@ public class Student_data extends AppCompatActivity {
     }
 
 
+    public void save(View view) {
+        cv.put(Full_name, fn.getText().toString());
+        cv.put(Address, address.getText().toString() );
+        cv.put(Personal_phone, pp.getText().toString());
+        cv.put(Mom_name, mn.getText().toString());
+        cv.put(Mom_phone, mp.getText().toString() );
+        cv.put(Dad_name, dn.getText().toString());
+        cv.put(Dad_phone, dp.getText().toString());
 
 
 
+    }
 }

@@ -9,5 +9,5 @@ public class Student_table {
     public static final String Mom_name="Mom_name";
     public static final String Mom_phone="Mom_phone";
     public static final String Dad_name="Dad_name";
-    public static final String dad_phone="dad_phone";
+    public static final String Dad_phone="Dad_phone";
 }

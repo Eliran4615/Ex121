@@ -16,7 +16,7 @@
             android:name=".Gareds_delete_option"
             android:exported="false" />
         <activity
-            android:name=".grades_input"
+            android:name=".grades_data"
             android:exported="false" />
         <activity
             android:name=".Credits"

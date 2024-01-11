@@ -13,13 +13,13 @@ import static com.example.ex121.Student_table.Mom_name;
 import static com.example.ex121.Student_table.Mom_phone;
 import static com.example.ex121.Student_table.Personal_phone;
 import static com.example.ex121.Student_table.TABLE_Student;
-import static com.example.ex121.Student_table.dad_phone;
+import static com.example.ex121.Student_table.Dad_phone;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class HelperDB {
+
     public class HelperDB extends SQLiteOpenHelper {
 
         private static final String DATABASE_NAME = "dbexam.db";
@@ -34,23 +34,23 @@ public class HelperDB {
         public void onCreate(SQLiteDatabase db) {
 
             strCreate="CREATE TABLE "+TABLE_Grades;
-            strCreate+=" ("+KEY_ID+" INTEGER PRIMARY KEY,";
+            strCreate+=" ("+KEY_ID+" INTEGER PRIMARY KEY ,";
             strCreate+=" "+GRADES+" INTEGER,";
             strCreate+=" "+SUBJECT+" TEXT,";
-            strCreate+=" "+TYPE+" TEXT";
-            strCreate+=" "+QUARTER+" TEXT";
+            strCreate+=" "+TYPE+" TEXT ,";
+            strCreate+=" "+QUARTER+" TEXT ,";
             strCreate+=");";
             db.execSQL(strCreate);
 
             strCreate="CREATE TABLE "+TABLE_Student;
             strCreate+=" ("+KEY_ID+" INTEGER PRIMARY KEY,";
             strCreate+=" "+Full_name+" TEXT,";
-            strCreate+=" "+Address+" TEXT";
-            strCreate+=" "+Personal_phone+" TEXT";
-            strCreate+=" "+Mom_name+" TEXT";
-            strCreate+=" "+Mom_phone+" INTEGER";
-            strCreate+=" "+Dad_name+" TEXT";
-            strCreate+=" "+dad_phone+" INTEGER";
+            strCreate+=" "+Address+" TEXT ,";
+            strCreate+=" "+Personal_phone+" TEXT ,";
+            strCreate+=" "+Mom_name+" TEXT ,";
+            strCreate+=" "+Mom_phone+" INTEGER ,";
+            strCreate+=" "+Dad_name+" TEXT ,";
+            strCreate+=" "+Dad_phone+" INTEGER ,";
 
 
             strCreate+=");";

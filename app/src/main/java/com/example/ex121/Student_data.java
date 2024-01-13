@@ -24,6 +24,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.Objects;
 
@@ -113,9 +114,12 @@ public class Student_data extends AppCompatActivity implements View.OnCreateCont
         cv.put(Mom_phone, mp.getText().toString() );
         cv.put(Dad_name, dn.getText().toString());
         cv.put(Dad_phone, dp.getText().toString());
+        db = hlp.getWritableDatabase();
         db.insert(Student_table.TABLE_Student, null, cv);
 
+
         db.close();
+        Toast.makeText(this,"record save",Toast.LENGTH_LONG).show();
 
 
 

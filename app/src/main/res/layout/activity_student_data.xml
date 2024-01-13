@@ -127,13 +127,14 @@
             android:id="@+id/save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="save" />
+            android:text="save"
+            android:onClick="save" />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.1"
-            android:onClick="save" />
+             />
 
     </LinearLayout>
 

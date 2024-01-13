@@ -13,15 +13,11 @@ import static com.example.ex121.Student_table.TABLE_Student;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Adapter;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -89,40 +85,6 @@ public class grades_data extends AppCompatActivity {
         db.close();
         adp = new ArrayAdapter<>(this, androidx.constraintlayout.widget.R.layout.support_simple_spinner_dropdown_item, names);
         name_selection.setAdapter(adp);
-        name_selection.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
+       // name_selection.setOnItemSelectedListener(this);
     }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.main,menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-    /**
-     * reacts to item selection.
-     * <p>
-     *
-     * @param    item Description    refers to the selected menu item.
-     * @return    Description            returns true.
-     */
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if(id == R.id.menuCredits){
-            Intent si = new Intent(this,Credits.class);
-            startActivity(si);
-        }
-        else if (id ==R.id.menuGrades) {
-            Intent si = new Intent(this, grades_data.class);
-            startActivity(si);
-        }
-
-        else if (id ==R.id.menuStudent) {
-            Intent si = new Intent(this, Student_data.class);
-            startActivity(si);
-        }
-        else if (id ==R.id.menuDelete) {
-            Intent si = new Intent(this, Grades_delete_option.class);
-            startActivity(si);
-        }
-        return true;
-    }
-
 }

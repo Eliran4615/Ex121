@@ -94,7 +94,7 @@
             android:layout_height="0dp"
             android:layout_weight="0.3"
             android:onClick="save_g"
-            android:text="Button" />
+            android:text="Save_G" />
 
         <Space
             android:layout_width="match_parent"

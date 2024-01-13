@@ -8,6 +8,8 @@ import static com.example.ex121.Student_table.Mom_name;
 import static com.example.ex121.Student_table.Mom_phone;
 import static com.example.ex121.Student_table.Personal_phone;
 
+import static java.lang.System.in;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,12 +28,13 @@ import android.widget.EditText;
 import java.util.Objects;
 
 
-public class Student_data extends AppCompatActivity {
+public class Student_data extends AppCompatActivity implements View.OnCreateContextMenuListener  {
     AlertDialog.Builder adb;
     ContentValues cv = new ContentValues();
     EditText dn,dp,mn,pp,mp,address,save,fn;
     SQLiteDatabase db;
     HelperDB hlp;
+
 
 
     @Override
@@ -58,46 +61,47 @@ public class Student_data extends AppCompatActivity {
 
     }
 
+    /**
+     * creates the context menu.
+     * <p>
+     *
+     * @param    menu Description    refers to the current context menu.
+     * @return    Description            returns a super action of this function.
+     */
     @Override
-    public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo) {
-
-        super.onCreateContextMenu(menu, view, menuInfo);
-        menu.setHeaderTitle("view Options");
-        menu.add("personal");
-        menu.add("grades");
-        menu.add("delete");
-        menu.add("filtering/sorting");
-        menu.add("credits");
-
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.main,menu);
+        return super.onCreateOptionsMenu(menu);
     }
-
-    public boolean onOptionsItemSelected(@NonNull MenuItem item)
-    {
-        /**
-         * function will check if the user clicked the credit button and if he did it will get him to the credits screen
-         * param item: the item clicked
-         */
-        String st = Objects.requireNonNull(item.getTitle()).toString();
-        if(st.equals("credit")) {
-            Intent si = new Intent(this, Credits.class);
+    /**
+     * reacts to item selection.
+     * <p>
+     *
+     * @param    item Description    refers to the selected menu item.
+     * @return    Description            returns true.
+     */
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        Intent st = new Intent(this, Student_data.class);
+        if(id == R.id.menuCredits){
+            Intent si = new Intent(this,Credits.class);
             startActivity(si);
-
-        } else if (st.equals("grades")) {
+        }
+        else if (id ==R.id.menuGrades) {
             Intent si = new Intent(this, grades_data.class);
             startActivity(si);
         }
-        else if (st.equals("student")) {
+
+        else if (id ==R.id.menuStudent) {
             Intent si = new Intent(this, Student_data.class);
             startActivity(si);
         }
-     else if (st.equals("grades_d")) {
-        Intent si = new Intent(this, Gareds_delete_option.class);
-        startActivity(si);
+        else if (id ==R.id.menuDelete) {
+            Intent si = new Intent(this, Grades_delete_option.class);
+            startActivity(si);
+        }
+        return true;
     }
-
-        return super.onOptionsItemSelected(item);
-    }
-
 
 
 

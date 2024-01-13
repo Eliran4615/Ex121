@@ -7,12 +7,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class Credits extends AppCompatActivity {
+public class Grades_delete_option extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_credits);
+        setContentView(R.layout.activity_grades_delete_option);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
